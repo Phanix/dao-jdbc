@@ -1,6 +1,8 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import model.dao.DaoFactory;
 import model.entities.Department;
@@ -20,7 +22,14 @@ public class Program {
 		Seller seller =  DaoFactory.createSellerDao().findById(2);
 		
 		System.out.println(seller);
-
+		
+		System.out.println("=== TEST 2: seller findAllByDepartment ===");
+		
+		List<Seller> sellers = DaoFactory.createSellerDao().findByDepartment(new Department(2, "Books"));
+		
+		for(Seller seller1 : sellers){
+			System.out.println(seller1);
+		}
 	}
 
 }
