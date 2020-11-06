@@ -30,6 +30,8 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 			st.executeUpdate();
 		}catch(Exception e){
 			throw new DbException(e.getMessage());
+		}finally{
+			DB.closeStatement(st);
 		}
 		
 	}
@@ -42,7 +44,16 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+		try{
+			st = conn.prepareStatement("DELETE FROM department WHERE Id = ?");
+			st.setInt(1, id);
+			st.executeUpdate();
+		}catch(Exception e){
+			throw new DbException(e.getMessage());
+		}finally{
+			DB.closeStatement(st);
+		}
 		
 	}
 
