@@ -2,8 +2,12 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import db.DB;
 import db.DbException;
 import model.entities.Department;
 
@@ -50,8 +54,26 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 
 	@Override
 	public List<Department> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet rs = null;
+		Statement st = null;
+		try{
+			st = conn.createStatement();
+			rs = st.executeQuery("SELECT * FROM department");
+			List<Department> departments = new ArrayList<>();
+			while(rs.next()){
+				int id = rs.getInt("Id");
+				String name = rs.getString("Name");
+				Department dep = new Department(id, name);
+				departments.add(dep);
+			}
+			return departments;
+		}catch(Exception e){
+			throw new DbException(e.getMessage());
+		}finally{
+			DB.closeResultSet(rs);
+			DB.closeStatement(st);
+		}
+		
 	}
 
 }
