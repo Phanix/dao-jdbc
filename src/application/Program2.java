@@ -32,6 +32,13 @@ public class Program2 {
 		Department dep = DaoFactory.createDepartmentDao().findById(4);
 		System.out.println(dep);
 		
+		System.out.println("=== TEST 5 update Department ===");
+		dep.setName("Cars");
+		DaoFactory.createDepartmentDao().update(dep);
+		
+		dep = DaoFactory.createDepartmentDao().findById(4);
+		System.out.println(dep);
+		
 	}
 
 }
