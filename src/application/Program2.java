@@ -19,14 +19,19 @@ public class Program2 {
 			System.out.println(dep);
 		}
 		
-		System.out.println("=== TEST 2 deleteById Department ===");
-		DaoFactory.createDepartmentDao().deleteById(5);
+//		System.out.println("=== TEST 3 deleteById Department ===");
+//		DaoFactory.createDepartmentDao().deleteById(5);
 		
 		List<Department> deps2 =  DaoFactory.createDepartmentDao().findAll();
 		
 		for(Department dep : deps2){
 			System.out.println(dep);
 		}
+		
+		System.out.println("=== TEST 4 findById Department ===");
+		Department dep = DaoFactory.createDepartmentDao().findById(4);
+		System.out.println(dep);
+		
 	}
 
 }
