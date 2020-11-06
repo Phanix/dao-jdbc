@@ -63,6 +63,17 @@ public class Program {
 		for(Seller seller1 : sellers4){
 			System.out.println(seller1);
 		}
+		
+		System.out.println("=== TEST 5: delete seller ===");
+		
+		DaoFactory.createSellerDao().deleteById(25);
+		
+		List<Seller> sellers5 = DaoFactory.createSellerDao().findAll();
+		
+		for(Seller seller1 : sellers5){
+			System.out.println(seller1);
+		}
+		
 	}
 
 }
