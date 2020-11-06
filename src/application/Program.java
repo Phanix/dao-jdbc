@@ -51,6 +51,18 @@ public class Program {
 		for(Seller seller1 : sellers3){
 			System.out.println(seller1);
 		}
+		
+		System.out.println("=== TEST 5: update seller ===");
+		
+		Seller seller6 = DaoFactory.createSellerDao().findById(25);
+		seller6.setName("Fabio");
+		DaoFactory.createSellerDao().update(seller6);
+		
+		List<Seller> sellers4 = DaoFactory.createSellerDao().findAll();
+		
+		for(Seller seller1 : sellers4){
+			System.out.println(seller1);
+		}
 	}
 
 }
